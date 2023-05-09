@@ -1,9 +1,11 @@
 <?php
 include "init.php";
+include "dbconnect.php";
 
 use App\AdminController;
 
-$admin_controller = new AdminController;
+$admin_controller = new AdminController($database);
+
 
 switch (getenv('REQUEST_METHOD')) {
 
@@ -11,6 +13,6 @@ switch (getenv('REQUEST_METHOD')) {
         $admin_controller->show();
         break;
     case "POST":
-        $admin_controller->store();
+        $admin_controller->delete();
         break;
 }

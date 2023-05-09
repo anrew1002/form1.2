@@ -9,14 +9,12 @@ class Request
     private $getData = [];
     private $requestMethod;
 
-    private function __construct()
+    function __construct()
     {
         $this->requestMethod = getenv('REQUEST_METHOD');
         $this->getData = $_GET;
         $this->postData = $_POST;
     }
-
-
 
     public function getRequestData()
     {

@@ -7,4 +7,6 @@ interface DatabaseInterface
     public function save(array $data);
 
     public function get(): array;
+
+    public function delete($recordID);
 }

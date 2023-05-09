@@ -3,51 +3,52 @@
 namespace App;
 
 use App\View;
+use App\Request;
+use App\Database\DatabaseInterface;
+use DateTime;
 
 class AdminController
 {
     protected $view;
+    protected $request;
+    protected $database;
 
-    public function __construct()
+    public function __construct(DatabaseInterface $database)
     {
         $this->view = new View;
+        $this->request = new Request;
+        $this->database = $database;
     }
     public function show()
     {
+        $getData = $this->request->getGetData();
 
-
-        $list_of_files = scandir("data");
-        $list_of_json = array();
         //функция поиска
-        if (!empty($_GET)) {
-            $search_string = strip_tags($_GET["search"]);
+        if (!empty($getData) && $getData["search"] !== "") {
+            $search_string = strip_tags($getData["search"]);
         }
-        foreach ($list_of_files as $filename) {
-            // echo is_writable("data/" . $filename);
-            if (is_file("data/" . $filename)) {
-                if (!empty($search_string)) {
-                    $fileinfo = json_decode(file_get_contents("data\\" . $filename), true);
-                    $fileinfo["filename"] = $filename;
-                    if (mb_stripos($fileinfo["name"] . $fileinfo["lastname"], $search_string) !== false) {
-                        $list_of_json[] = $fileinfo;
-                    }
-                } else {
-                    $fileinfo = json_decode(file_get_contents("data\\" . $filename), true);
-                    $fileinfo["filename"] = $filename;
-                    $list_of_json[] = $fileinfo;
+
+        $list_of_users = $this->database->get();
+        if (!empty($search_string)) {
+            $list_of_search = [];
+            foreach ($list_of_users as $user) {
+                if (mb_stripos($user["name"] . $user["lastname"], $search_string) !== false) {
+                    $list_of_search[] = $user;
                 }
-                // var_dump(json_decode(file_get_contents("data\\" . $filename), true));
             }
+
+            $this->view->render('adminlist', ["data" => $list_of_search]);
+            return;
         }
 
-
-        $this->view->render('adminlist', ["data" => $list_of_json]);
+        $this->view->render('adminlist', ["data" => $list_of_users]);
+        return;
     }
-    public function store()
+    public function delete()
     {
-        var_dump($_POST);
-        foreach ($_POST as $filename => $bool) {
-            unlink("data/" . rtrim($filename, "_json") . ".json");
+        foreach ($this->request->getPostData() as $filename => $bool) {
+            // unlink("data/" . rtrim($filename, "_json") . ".json");
+            $this->database->delete($filename);
         }
         header('Location: admin.php');
     }

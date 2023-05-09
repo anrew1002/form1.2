@@ -3,11 +3,9 @@
 namespace App\Database;
 
 use App\Database\Database;
-use App\Database\CashableTrait;
 
 class JsonDatabase extends Database
 {
-    use CashableTrait;
     private $format = ".json";
 
     public function save($data)
@@ -16,7 +14,6 @@ class JsonDatabase extends Database
 
         $data = json_encode($data, JSON_UNESCAPED_UNICODE);
         file_put_contents($this->dataSaveDir . "/" . $filename . $this->format,  $data);
-        $this->cash($filename, $data);
         return $filename;
     }
 
@@ -35,5 +32,8 @@ class JsonDatabase extends Database
         }
 
         return $list_of_json;
+    }
+    public function delete($recordID)
+    {
     }
 }

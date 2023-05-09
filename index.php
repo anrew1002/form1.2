@@ -1,10 +1,11 @@
 <?php
 
 include "init.php";
+include "dbconnect.php";
 
 use App\FormController;
 
-$form_controller = new FormController;
+$form_controller = new FormController($database);
 
 switch (getenv('REQUEST_METHOD')) {
 

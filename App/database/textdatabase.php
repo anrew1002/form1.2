@@ -34,4 +34,7 @@ class TextDatabase extends Database
 
         return $list_of_arrays;
     }
+    public function delete($recordID)
+    {
+    }
 }

@@ -11,7 +11,6 @@ abstract class Database implements DatabaseInterface
     function __construct(string $dataSaveDir = "data")
     {
         $this->dataSaveDir = $dataSaveDir;
-        echo $this->dataSaveDir;
     }
     public function getDataSaveDir()
     {

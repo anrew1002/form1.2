@@ -30,7 +30,7 @@
                     use App\View;
 
                     $view = new View;
-                    foreach ($data as $item) {
+                    foreach ($data as $recordNumber => $item) {
                         $view->render("partials/admintask", ['data' => $item]);
                     }
 
