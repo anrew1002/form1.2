@@ -6,8 +6,7 @@ use App\AdminController;
 use App\Auth;
 
 $admin_controller = new AdminController($database);
-$authPlugin = new Auth;
-
+$authPlugin =  Auth::getInstance();
 
 
 if ($authPlugin->is_authed()) {

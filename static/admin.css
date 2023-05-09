@@ -225,3 +225,13 @@ input[type="checkbox"].task__done {
     padding: 15px 15px 0px 15px;
 
 }
+
+.logout_form {
+    display: block;
+    padding: 15px 15px 0px 15px;
+}
+
+.logout_form input {
+    margin: 0;
+    padding: 4px 8px;
+}

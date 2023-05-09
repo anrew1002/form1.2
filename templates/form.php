@@ -12,6 +12,25 @@
         <div class="form-conference--inner">
             <span class="title">
                 <h1>Форма участника конференции</h1>
+                <?php
+                $ip = $_SERVER['REMOTE_ADDR'];
+                $ip_file = 'txt_data/ip.txt';
+                $expire = time() + 60 * 60 * 24 * 30;
+
+                if (!isset($_COOKIE['visited'])) {
+                    file_put_contents($ip_file, $ip . "\n", FILE_APPEND | LOCK_EX);
+                    setcookie('visited', 'yes', $expire);
+                }
+
+                $unique_ips = count(array_unique(explode("\n", file_get_contents($ip_file)))) - 1;
+                echo "Уникальных по IP посетителей: " . $unique_ips;
+                $users = count(glob(session_save_path() . '/*'));
+                echo "<br>Пользователей по сессиям: " . $users;
+                $counter = file_get_contents('txt_data/hits.txt') + 1;
+                echo "<br>Хитов: " . $counter;
+                file_put_contents('txt_data/hits.txt', $counter);
+
+                ?>
                 <p>
                     Это форма необходимая для участия в данной конференции
                 </p>

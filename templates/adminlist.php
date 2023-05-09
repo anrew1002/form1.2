@@ -12,8 +12,10 @@
 
 <body>
     <div class="main-container">
-
         <div class="todo-list">
+            <form class="logout_form" action="" method="GET">
+                <input type="submit" name="logout" value="Выйти">
+            </form>
             <form class="search_form" action="" method="GET">
                 Поиск по имени:
                 <input type="text" name="search" value="<?= htmlspecialchars($_GET["search"] ?? "") ?>">

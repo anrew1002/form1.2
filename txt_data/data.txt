@@ -1,3 +1,3 @@
 name∷lastname∷email∷phone∷theme∷money∷mailing∷processing∷IP∷date
-Андрей∷Андрей∷anrew1002@mail.ru∷+79500670444∷business∷PayPal∷on∷on∷127.0.0.1∷2023-05-09 06:32:48
+Андрей∷Андрей∷anrew1002@mail.ru∷+79500670444∷business∷PayPal∷on∷on∷127.0.0.1∷2023-05-09 06:32:48∷deleted∷deleted∷deleted∷deleted
 Андрей∷Горохов∷anrew1002@gmail.com∷+7 (950) 067-04-44∷business∷WebMoney∷on∷on∷127.0.0.1∷2023-05-09 10:51:26
