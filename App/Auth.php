@@ -7,7 +7,6 @@ use App\Request;
 
 class Auth
 {
-
     protected $authed = false;
     protected $database;
     protected $request;
