@@ -41,7 +41,7 @@ class Auth
     {
         $password = $_COOKIE['password'] ?? null;
         if (!empty($password)) {
-            if ($password === 'adminTOKEN') {
+            if ($password === 'd033e22ae348aeb5660fc2140aec35850c4da997') {
                 $this->authed = true;
             }
         }

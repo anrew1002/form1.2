@@ -32,7 +32,7 @@ class AdminController
 
         if ($postData['username'] === 'admin') {
             if (sha1($postData['password']) === 'd033e22ae348aeb5660fc2140aec35850c4da997') {
-                setcookie('password', 'adminTOKEN', time() + 3000, httponly: true);
+                setcookie('password', 'd033e22ae348aeb5660fc2140aec35850c4da997', time() + 3000, httponly: true);
             }
         }
         header('Location: admin.php');
