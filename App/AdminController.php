@@ -19,6 +19,21 @@ class AdminController
         $this->request = new Request;
         $this->database = $database;
     }
+    public function login_show()
+    {
+        $this->view->render('login');
+    }
+    public function login_post()
+    {
+        $postData = $this->request->getPostData();
+
+        if ($postData['username'] === 'admin') {
+            if ($postData['password'] === 'admin') {
+                setcookie('password', 'adminTOKEN', httponly: true);
+            }
+        }
+        header('Location: admin.php');
+    }
     public function show()
     {
         $getData = $this->request->getGetData();

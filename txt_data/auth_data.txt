@@ -1,0 +1,2 @@
+login∷password∷is_admin
+admin∷admin∷yes

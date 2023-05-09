@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <link href="static/index.css" rel="stylesheet" type="text/css">
+    <title>Form</title>
 </head>
 
 <body>
@@ -97,7 +98,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><input type="submit"></td>
+                            <td><input type="submit" value="Войти"></td>
                         </tr>
                     </table>
                 </fieldset>
